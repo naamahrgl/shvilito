@@ -1,0 +1,45 @@
+---
+// src/components/Navigation.astro
+import { navlinks, navlinkItem } from "../styles/styles";
+
+interface Props {
+  lang?: 'he' | 'en';
+  overrideClass?: string;
+  containerClass?: string;
+}
+
+const { lang = 'he', overrideClass, containerClass } = Astro.props;
+
+const container = containerClass ?? navlinks;
+const linkClass = overrideClass ?? navlinkItem;
+
+const texts = {
+  he: {
+    home: 'עמוד הבית',
+    about: 'אודות',
+    routes: 'מסלולים',
+    gallery: 'גלריה',
+    offers: 'הטיולים שלנו',
+    recs: 'המלצות',
+  },
+  en: {
+    home: 'Home',
+    about: 'About',
+    routes: 'Routes',
+    gallery: 'Gallery',
+    offers: 'Our Trips',
+    recs: 'Recommendations',
+  }
+};
+
+const t = texts[(lang as 'he'|'en')];
+---
+
+<div id="navlinks" class={container}>
+  <a href=`/${lang}/` class={linkClass}>{t.home}</a>
+  <a href=`/${lang}/about/` class={linkClass}>{t.about}</a>
+    <a href=`/${lang}/trips/` class={linkClass}>{t.offers}</a>
+  <a href=`/${lang}/blog/` class={linkClass}>{t.gallery}</a>
+  <a href=`/${lang}/tags/` class={linkClass}>{t.recs}</a>
+  <a href=`/${lang}/tags/` class={linkClass}>{t.routes}</a>
+</div>

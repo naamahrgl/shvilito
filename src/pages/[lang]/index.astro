@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ContentBlock, Button, Box } from '../../components/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'he' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+interface Params {
+  lang: 'he' | 'en';
+}
+
+const { params } = Astro;
+const lang = (params as Params).lang;
+
+const texts = {
+  he: {
+    pageTitle: 'עמוד הבית',
+    aboutTitle: 'אודות',
+    
+    aboutText:       'שמי כרמל, ואני הפנים שמאחורי שביליטו.',
+    aboutButton: 'עוד עליי',
+    servicesTitle: 'הטיולים שלנו',
+    servicesText: "מסלולים וחוויות לכל גיל",
+    servicesButton: 'לפרטים נוספים',
+  },
+  en: {
+    pageTitle: 'Home Page',
+    aboutTitle: 'About',
+    aboutText: 'My name is Carmel, and I am the face behind Shvilito.',
+    aboutButton: 'Learn More About Me',
+    servicesTitle: 'Our Trips',
+    servicesText: "Adventures and Experiences for Everyone",
+    servicesButton: 'More Info',
+  },
+};
+
+const t = texts[lang];
+---
+
+<BaseLayout pageTitle={t.pageTitle} lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
+  
+  <!-- קונטיינר אודות -->
+  <ContentBlock
+    title={t.aboutTitle}
+    text={t.aboutText}
+    imageSrc="/hi.jpg"
+    imageAlt={t.aboutTitle}
+    buttonText={t.aboutButton}
+    buttonHref={`/${lang}/about`}
+  />
+
+  <!-- קונטיינר שירותים -->
+  <ContentBlock
+    title={t.servicesTitle}
+    text={t.servicesText}
+    imageSrc="/hi.jpg"
+    imageAlt={t.servicesTitle}
+    buttonText={t.servicesButton}
+    buttonHref={`/${lang}/trips`}
+    reverse={true}
+  />
+
+  <!-- דוגמה נוספת של קונטיינר פשוט עם Box בלבד -->
+  <Box className="text-center mt-12 bg-[#f5eee7]">
+    <h2 class="text-3xl font-bold mb-4">{lang === 'he' ? 'מבצע מיוחד' : 'Special Offer'}</h2>
+    <p class="text-gray-700">{lang === 'he' ? 'לרגל החג, לחם במחיר מיוחד!' : 'Special pricing for the holiday!'}</p>
+    <Button text={lang === 'he' ? 'קנה עכשיו' : 'Buy Now'} href={`/${lang}/shop`} />
+  </Box>
+
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  pageTitle: string;
+  lang?: 'he' | 'en';
+  dir?: 'rtl' | 'ltr';
+}
+const { pageTitle, lang = 'en', dir = 'ltr' } = Astro.props;
+---
+
+<html lang={lang} dir={dir}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header lang={lang} />
+    <slot />
+    <Footer />
+    <script>
+            import "../scripts/menu.js";
+    </script>
+  </body>
+</html>

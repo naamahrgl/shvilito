@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Box, Title } from '../../components/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'he' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const lang = (Astro.params.lang === 'he' || Astro.params.lang === 'en') ? Astro.params.lang : 'he';
+const content = {
+  he: {
+    title: "הטיולים שלנו",
+    subtitle: "מסלולים וחוויות לכל גיל",
+    trips: [
+      {
+        name: "טרקים בשטח",
+        description: "אנחנו מציעים טיולים חד־יומיים או דו־יומיים ברמת קושי בינונית, המתאימים לקהל המטייל שאוהב להרגיש את השטח. בטיולים הדו־יומיים אנו דואגים לכל הלוגיסטיקה – אוהלים, מתחם לינה מפנק, ארוחות שטח, מים לשתייה ועוד, כך שתוכלו ליהנות בראש שקט מהחוויה עצמה. באתר תוכלו למצוא מידע על הטיולים הקרובים ולקבל טפסי הרשמה נוחים.",
+        image: { src: "/hi.jpg", alt: "טרקים בשטח" }
+      },
+      {
+        name: "ימי גיבוש לחברות וארגונים",
+        description: "בפורמט שהכי מצליח אצלנו, אנחנו נפגשים בבוקר בחניון יפה בטבע לארוחת בוקר בשטח, ממשיכים לפעילות גיבוש קלילה וכיפית, יוצאים למסלול קצר בטבע, משלבים אטרקציה מעניינת, ומסיימים בארוחת צהריים טעימה. אנחנו בונים יחד איתכם את היום לפי התקציב, הצרכים והחלום שלכם – כדי ליצור חוויה ייחודית ומגבשת לעובדים.",
+        image: { src: "/hi.jpg", alt: "ימי גיבוש" }
+      },
+      {
+        name: "טיולי משפחות",
+        description: "אנחנו מתארגנים יחד עם כמה משפחות ויוצאים למסלול קליל של כשעתיים וחצי בטבע. במהלך הטיול אנו משלבים פעילות יצירה מותאמת לילדים, שמוסיפה ממד חווייתי ומעצים. המטרה שלנו היא להשאיר זיכרון חיובי, מחזק ומשמעותי אצל הקטנים – וגם אצל ההורים. באתר תוכלו לראות המלצות ממשפחות שכבר טיילו איתנו.",
+        image: { src: "/hi.jpg", alt: "טיולי משפחות" }
+      },
+      {
+        name: "טיולי עששיות",
+        description: "אנחנו נפגשים מעט לפני השקיעה, מקבלים הסבר על השימוש בעששיות, ויוצאים יחד לשטח כשהחושך יורד. במהלך ההליכה נציב מלכודות לעקבות, נשוחח על בעלי החיים הליליים וננסה לאתר אותם בשטח. זוהי חוויה קסומה המשלבת למידה, הרפתקה וקסם מיוחד של לילה בטבע.",
+        image: { src: "/hi.jpg", alt: "טיולי עששיות" }
+      },
+      {
+        name: "מחנה הורה וילד",
+        description: "אחד המוצרים האהובים עלינו ביותר. אנחנו נפגשים ליומיים מלאים בטבע, ודואגים לכל הלוגיסטיקה – לינה, ציוד וארוחות. ההורים והילדים שותפים בהכנת האוכל, בהדלקת אש, בחיפוש עקבות של בעלי חיים ובחוויות שטח משותפות. זהו זמן טהור, בלתי אמצעי ומעצים, שמחזק את הקשר בין הורה לילדו ויוצר זיכרונות שילוו אתכם עוד שנים רבות.",
+        image: { src: "/hi.jpg", alt: "מחנה הורה וילד" }
+      }
+    ]
+  },
+  en: {
+    title: "Our Trips",
+    subtitle: "Adventures and Experiences for Everyone",
+    trips: [
+      {
+        name: "Outdoor Treks",
+        description: "We offer one- or two-day treks at a moderate difficulty level, perfect for travelers who love to experience the outdoors. For two-day trips, we handle all logistics – tents, cozy sleeping areas, outdoor meals, drinking water, etc., so you can enjoy the experience with peace of mind. On our website, you can find information about upcoming trips and convenient registration forms.",
+        image: { src: "/hi.jpg", alt: "Outdoor Treks" }
+      },
+      {
+        name: "Corporate Team Building",
+        description: "In our most successful format, we meet in the morning at a scenic parking area in nature for breakfast, continue with light and fun team-building activities, take a short trail in nature, add an interesting attraction, and finish with a delicious lunch. We plan the day together with you according to budget, needs, and dreams – creating a unique and bonding experience for employees.",
+        image: { src: "/hi.jpg", alt: "Corporate Team Building" }
+      },
+      {
+        name: "Family Hikes",
+        description: "We organize with several families and go on an easy 2.5-hour trail in nature. During the hike, we include creative activities for kids, adding a fun and empowering dimension. Our goal is to leave a positive, strengthening, and meaningful memory for both children and parents. On our website, you can see recommendations from families who have already hiked with us.",
+        image: { src: "/hi.jpg", alt: "Family Hikes" }
+      },
+      {
+        name: "Lantern Hikes",
+        description: "We meet shortly before sunset, get instructions on how to use lanterns, and head out into the outdoors as darkness falls. Along the way, we set up tracking traps, talk about nocturnal animals, and try to spot them in the wild. This magical experience combines learning, adventure, and the special charm of a night in nature.",
+        image: { src: "/hi.jpg", alt: "Lantern Hikes" }
+      },
+      {
+        name: "Parent & Child Camp",
+        description: "One of our favorite experiences. We meet for two full days in nature and take care of all logistics – accommodation, gear, and meals. Parents and children participate in preparing food, lighting fires, tracking animal footprints, and sharing outdoor experiences. This is pure, unfiltered, and empowering time that strengthens the parent-child bond and creates memories that will last for years.",
+        image: { src: "/hi.jpg", alt: "Parent & Child Camp" }
+      }
+    ]
+  }
+};
+
+const { title, subtitle, trips } = content[lang];
+---
+
+<BaseLayout pageTitle={title} lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
+  <section class="py-16 md:py-24 px-4">
+    <div class="container mx-auto flex flex-col gap-12">
+
+      <Box className="p-8 bg-[#f5eee7]">
+        <Title text={title} size="lg" className="mb-2" />
+        <Title text={subtitle} size="md" className="mb-6" />
+      </Box>
+
+      {trips.map((trip, idx) => (
+        <Box  className="flex flex-col md:flex-row gap-6 p-6 bg-white shadow-lg rounded-lg">
+          {trip.image && (
+            <div class="md:w-1/3 flex-shrink-0 rounded-lg overflow-hidden">
+              <img src={trip.image.src} alt={trip.image.alt} class="w-full h-full object-cover" />
+            </div>
+          )}
+          <div class="flex-1 flex flex-col gap-4">
+            <Title text={trip.name} size="md" />
+            <p class="text-gray-700 leading-relaxed">{trip.description}</p>
+          </div>
+        </Box>
+      ))}
+
+    </div>
+  </section>
+</BaseLayout>

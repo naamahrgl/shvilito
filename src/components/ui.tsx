@@ -1,0 +1,134 @@
+// src/components/ui.tsx
+/* -------------------- Tailwind Design Tokens -------------------- */
+export const TW = {
+  buttons: {
+    base: "px-6 py-2 rounded font-semibold transition-colors duration-200",
+    primary: "bg-[#119748] text-white hover:bg-[#1a732c]",
+    secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
+  },
+  titles: {
+    sm: "text-xl font-semibold",
+    md: "text-2xl font-bold",
+    lg: "text-4xl font-extrabold",
+  },
+  text: {
+    base: "text-base text-gray-700",
+    secondary: "text-sm text-gray-500",
+  },
+  containers: {
+    box: "p-6 rounded-lg shadow-lg bg-[#f5eee7]",
+contentBlock: "flex flex-col items-center my-12 bg-[#f5eee7]",
+  },
+  images: {
+    default: "w-full rounded-lg shadow-lg",
+  },
+};
+
+/* -------------------- Button -------------------- */
+interface ButtonProps {
+  text: string;
+  href?: string;
+  onClick?: () => void;
+  variant?: 'primary' | 'secondary';
+  className?: string;
+}
+
+export function Button({ text, href, onClick, variant = 'primary', className = '' }: ButtonProps) {
+  const style = `${TW.buttons.base} ${variant === 'primary' ? TW.buttons.primary : TW.buttons.secondary} ${className}`;
+  return href
+    ? <a href={href} className={style}>{text}</a>
+    : <button onClick={onClick} className={style}>{text}</button>;
+}
+
+/* -------------------- Title -------------------- */
+interface TitleProps {
+  text: string;
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+export function Title({ text, size = 'md', className = '' }: TitleProps) {
+  return <h2 className={`${TW.titles[size]} ${className}`}>{text}</h2>;
+}
+
+/* -------------------- Image -------------------- */
+interface ImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+export function Image({ src, alt, className = '' }: ImageProps) {
+  return <img src={src} alt={alt} className={`${TW.images.default} ${className}`} />;
+}
+
+/* -------------------- Box -------------------- */
+interface BoxProps {
+  children: any;
+  className?: string;
+}
+
+export function Box({ children, className = '' }: BoxProps) {
+  return <div className={`${TW.containers.box} ${className}`}>{children}</div>;
+}
+
+/* -------------------- ContentBlock -------------------- */
+interface ContentBlockProps {
+  title: string;
+  text: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  reverse?: boolean;
+  className?: string;
+}
+
+export function ContentBlock({
+  title,
+  text,
+  imageSrc,
+  imageAlt = "",
+  buttonText,
+  buttonHref,
+  reverse = false,
+  className = "",
+}: ContentBlockProps) {
+  const flexDirection = reverse ? "md:flex-row-reverse" : "md:flex-row";
+
+  return (
+    <div className={`${TW.containers.contentBlock}flex-col ${className}`}>
+{imageSrc && (
+  <div className="relative w-full md:w-1/2 h-64 md:h-96 flex-shrink-0 rounded-lg overflow-hidden">
+    {/* Actual image */}
+    <img
+      src={imageSrc}
+      alt={imageAlt}
+      className="w-full h-full object-cover"
+    />
+
+    {/* Gradient fade to content background */}
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#f5eee7]" />
+
+    {/* Title overlay, positioned ~2/3 down */}
+    <div className="absolute top-2/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4">
+      <Title text={title} size="md" className="text-white drop-shadow-lg" />
+    </div>
+  </div>
+)}
+
+
+
+      {/* Content side */}
+      <div className="md:w-1/2 flex flex-col gap-4 bg-[#f5eee7] p-6 rounded-lg w-full">
+        {/* Title only visible if no image (avoid double) */}
+        {!imageSrc && <Title text={title} size="md" />}
+        <p className={TW.text.base}>{text}</p>
+        {buttonText && buttonHref && <Button 
+        text={buttonText} 
+        href={buttonHref}
+         />}
+      </div>
+    </div>
+  );
+}

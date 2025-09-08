@@ -1,0 +1,66 @@
+---
+// src/pages/[lang]/about.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Box, Title } from '../../components/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'he' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const content = {
+  he: {
+    subtitle: "היי!",
+    title: "קצת עליי",
+    paragraphs: [
+      "שמי כרמל, ואני הפנים שמאחורי שביליטו.",
+      "אהבתי לטבע התחילה עוד בגיל 18, בטיול תנועת נוער במדבר – שם נשביתי בקסם ובעוצמות שלו. מאז, כל שביל וכל נחל הפכו לבית שני בשבילי.",
+      "אחרי שירות משמעותי בצבא, למדתי באוניברסיטה הפתוחה היסטוריה של ארץ ישראל ובנוסף הוסמכתי כ־מורה דרך. מאז אני ממשיך להעשיר את עצמי בסדנאות שונות – גששות, ODT, הישרדות, וחוויות שטח שמלמדות אותי בכל פעם מחדש לראות את הטבע בעיניים אחרות.",
+      "מה שאני הכי אוהב הוא החיבור לאנשים – ההזדמנות לצאת יחד למסע, לשתף חוויות, להתמודד עם אתגרים ולגלות את השקט והעוצמה שהטבע מציע. מבחינתי, כל יציאה לטבע היא לא רק פגישה עם נופים חדשים, אלא גם הזדמנות לפגוש מישהו יקר לך מאוד – אתה עצמך.",
+      "אני נשוי ואבא לשניים, חי בקיבוץ בצפון, ונהנה לשלב בין החיים הקיבוציים הפשוטים לבין ההרפתקאות שמחכות בכל פינה בארץ.",
+      "ב\"שביליטו\" אני מזמין אתכם לצאת איתי לדרך – לגלות, לחוות ולהתאהב בטבע מחדש."
+    ],
+    images: [
+      { src: "/carmel.webp", alt: "כרמל – שביליטו" }
+    ]
+  },
+  en: {
+    title: "About Me",
+    subtitle: "Hi!",
+    paragraphs: [
+      "My name is Carmel, and I am the face behind Shvilito.",
+      "My love for nature started at the age of 18, during a youth movement trip in the desert – where I was captivated by its magic and power. Since then, every trail and stream has become like a second home to me.",
+      "After a meaningful service in the army, I studied the history of Israel at the Open University and also became a certified tour guide. Since then, I have continued to enrich myself through various workshops – tracking, ODT, survival, and outdoor experiences that teach me every time to see nature through new eyes.",
+      "What I love the most is connecting with people – the opportunity to embark on a journey together, share experiences, face challenges, and discover the peace and power that nature offers. For me, every outing into nature is not just a meeting with new landscapes, but also an opportunity to meet someone very dear to you – yourself.",
+      "I am married and a father of two, living in a kibbutz in the north, enjoying the balance between simple kibbutz life and the adventures waiting in every corner of the country.",
+      "At \"Shvilito\" I invite you to come with me on the path – to explore, experience, and fall in love with nature all over again."
+    ],
+    images: [
+      { src: "/carmel-en.webp", alt: "Carmel – Shvilito" }
+    ]
+  }
+};
+
+
+const lang = (Astro.params.lang === 'en' || Astro.params.lang === 'he') ? Astro.params.lang : 'he';
+const { title, subtitle, paragraphs, images } = content[lang];
+---
+
+<BaseLayout pageTitle={title} lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
+  <section class="py-16 md:py-24 px-4">
+    <div class="container mx-auto flex flex-col gap-8">
+      <Box className="p-8 bg-[#f5eee7]">
+        <Title text={title} size="lg" className="mb-2" />
+        <Title text={subtitle} size="md" className="mb-6" />
+
+        {paragraphs.map((p, idx) => (
+          <p class="mb-4 text-gray-700 leading-relaxed">{p}</p>
+        ))}
+
+
+      </Box>
+    </div>
+  </section>
+</BaseLayout>
