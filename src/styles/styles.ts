@@ -19,3 +19,4 @@ export const copyright = "text-center text-xs text-brand-text-light pt-4";
 // example additions to styles/styles.ts
 export const footerNavContainer = "flex flex-col gap-2"; // חשוב: אין 'hidden' כאן
 export const footerLink = "text-sm hover:underline hover:text-brand-dark inline-block mr-2"; // זה שהדגמתי קודם
+
