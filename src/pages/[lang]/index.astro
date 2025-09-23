@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { ContentBlock, Button, Box } from '../../components/ui';
+import { ContentBlock, Button, Box, RoundButton } from '../../components/ui';
 import RecommendationsCarousel from '../../components/Carousel.tsx';
 import { socialIcon } from '../../styles/styles';
 
@@ -31,6 +31,9 @@ const texts = {
     servicesTitle: 'הטיולים שלנו',
     servicesText: "מסלולים וחוויות לכל גיל",
     servicesButton: 'לפרטים נוספים',
+        routesTitle: 'מסלולים מומלצים',
+    routesText: "טיולי משפחות ועוד!",
+    routesButton: 'More Info',
   },
   en: {
     pageTitle: 'Home Page',
@@ -41,6 +44,9 @@ const texts = {
     servicesTitle: 'Our Trips',
     servicesText: "Adventures and Experiences for Everyone",
     servicesButton: 'More Info',
+        routesTitle: 'Recommended Routes',
+    routesText: "Visit Nature with your Family",
+    routesButton: 'More Info',
   },
 };
 
@@ -68,14 +74,18 @@ const t = texts[lang];
 
     <!-- Title text centered -->
     <div class="relative z-10 flex flex-col gap-12 items-center justify-center h-full">
+           <img src="/logotrans.png" alt="Logo"  />
+ 
       <h1 class="text-white text-4xl md:text-6xl font-bold text-center drop-shadow-lg">
         {t.heroTitle}
       </h1>
    <div class="flex flex-row gap-2">
-                  <a href="https://www.instagram.com/shvilito_tours/"><img src="/Instagram_Glyph_Black.svg" alt="Instagram" class="w-16 h-16" /></a>
-        <a href="https://www.facebook.com/Shvilito.tours"><img src="/facebook.svg" alt="Facebook" class="w-16 h-16"  /></a>
-        <a href="https://wa.me/c/972507235363"><img src="/Digital_Glyph_Black.svg" alt="Whatsapp" class="w-16 h-16"  /></a>
-                <a href="mailto:melavni@gmail.com"><img src="/email.svg" alt="email" class="w-16 h-16"  /></a>
+        <RoundButton text="/Instagram_Glyph_Black.svg" href="https://www.instagram.com/shvilito_tours/" />
+        <RoundButton text="/facebook.svg" href="https://www.facebook.com/Shvilito.tours" />
+        <RoundButton text="/Digital_Glyph_Black.svg" href="https://wa.me/c/972507235363" />
+        <RoundButton text="/email.svg" href="mailto:melavni@gmail.com" />
+
+    
                 </div>
     </div>
 
@@ -111,11 +121,14 @@ const t = texts[lang];
 
 
 
-  <!-- דוגמה נוספת של קונטיינר פשוט עם Box בלבד -->
-  <Box className="text-center mt-12 bg-[#f5eee7]">
-    <h2 class="text-3xl font-bold mb-4">{lang === 'he' ? 'מבצע מיוחד' : 'Special Offer'}</h2>
-    <p class="text-gray-700">{lang === 'he' ? 'לרגל החג,  במחיר מיוחד!' : 'Special pricing for the holiday!'}</p>
-    <Button text={lang === 'he' ? 'קנה עכשיו' : 'Buy Now'} href={`/${lang}/shop`} />
-  </Box>
+  <ContentBlock
+    title={t.routesTitle}
+    text={t.routesText}
+    imageSrc="/hi.jpg"
+    imageAlt={t.routesTitle}
+    buttonText={t.routesButton}
+    buttonHref={`/${lang}/routes`}
+    reverse={true}
+  />
 
 </BaseLayout>

@@ -3,8 +3,11 @@
 export const TW = {
   buttons: {
     base: "px-6 py-2 rounded font-semibold transition-colors duration-200",
-    primary: "bg-[#119748] text-white hover:bg-[#1a732c]",
+        roundbase: "p-2  items-center justify-center",
+
+    primary: "bg-[#6D8B74] text-white hover:bg-[#57715C]",
     secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
+    round: "w-16 h-16 rounded-full  bg-[#f5eee7] items-center justify-center ",
   },
   titles: {
     sm: "text-xl font-semibold",
@@ -18,6 +21,8 @@ export const TW = {
   containers: {
     box: "p-6 rounded-lg shadow-lg bg-[#f5eee7]",
 contentBlock: "flex flex-col items-center my-12 bg-[#f5eee7]",
+    card: "overflow-hidden rounded-lg shadow-lg bg-white flex flex-col",
+    cardContent: "p-6 flex flex-col gap-4",
   },
   images: {
     default: "w-full rounded-lg shadow-lg",
@@ -37,6 +42,21 @@ export function Button({ text, href, onClick, variant = 'primary', className = '
   const style = `${TW.buttons.base} ${variant === 'primary' ? TW.buttons.primary : TW.buttons.secondary} ${className}`;
   return href
     ? <a href={href} className={style}>{text}</a>
+    : <button onClick={onClick} className={style}>{text}</button>;
+}
+
+/* -------------------- RoundButton -------------------- */
+interface RoundButtonProps {
+  text: object;
+  href?: string;
+  onClick?: () => void;
+  className?: string;
+}
+
+export function RoundButton({ text, href, onClick,  className = '' }: ButtonProps) {
+  const style = `${TW.buttons.roundbase} ${TW.buttons.round} ${className}`;
+  return href
+    ? <a href={href} className={style}><img src={text} className=""  /></a>
     : <button onClick={onClick} className={style}>{text}</button>;
 }
 
@@ -70,6 +90,28 @@ interface BoxProps {
 
 export function Box({ children, className = '' }: BoxProps) {
   return <div className={`${TW.containers.box} ${className}`}>{children}</div>;
+}
+
+/* -------------------- Card -------------------- */
+interface CardProps {
+  children: any;
+  className?: string;
+}
+
+export function Card({ children, className = "" }: CardProps) {
+  return <div className={`${TW.containers.card} ${className}`}>{children}</div>;
+}
+
+/* -------------------- CardContent -------------------- */
+interface CardContentProps {
+  children: any;
+  className?: string;
+}
+
+export function CardContent({ children, className = "" }: CardContentProps) {
+  return (
+    <div className={`${TW.containers.cardContent} ${className}`}>{children}</div>
+  );
 }
 
 /* -------------------- ContentBlock -------------------- */
@@ -132,3 +174,4 @@ export function ContentBlock({
     </div>
   );
 }
+

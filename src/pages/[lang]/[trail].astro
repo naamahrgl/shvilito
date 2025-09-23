@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image, Button, Box } from "../../components/ui";
+import { trails, type TrailProps, metatrailsmeta, type TrailMetaProps } from "../../data/trails";
+
+// Strongly type params
+interface Params {
+  lang: "he" | "en";
+  trail: string;
+}
+
+const { lang, trail } = Astro.params as Params;
+const data: TrailProps | undefined = trails[lang]?.[trail];
+const metadata: TrailMetaProps = metatrailsmeta.trailId[trail];
+
+if (!data) {
+  throw new Error(`Trail "${trail}" not found for lang "${lang}"`);
+}
+
+export function getStaticPaths() {
+  const paths: { params: Params }[] = [];
+
+  (Object.keys(trails) as (keyof typeof trails)[]).forEach((lang) => {
+    Object.keys(trails[lang]).forEach((trail) => {
+      paths.push({ params: { lang, trail } });
+    });
+  });
+
+  return paths;
+}
+---
+
+<BaseLayout pageTitle={data.name} lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
+  <section class="bg-[#f5eee7] py-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">{data.name}</h1>
+      <p class="text-lg text-gray-700">{data.desc}</p>
+      <div class="flex justify-center gap-4 mt-4 text-sm text-gray-600">
+        <span>📏 {data.distance}</span>
+                      <span>⭕ {data.type}</span>
+              <span>💧 {data.water}</span>
+        <span>⛰️ {data.difficulty}</span>
+        <span>🍂 {data.season}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+        <!-- Text content -->
+    <Box>
+      <p class="whitespace-pre-line">{data.content}</p>
+    </Box>
+    <!-- Main image -->
+    <Image src={metadata.img} alt='' className="w-full h-80 object-cover rounded-lg shadow-lg" />
+
+
+
+   <!-- Gallery -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {metadata.gallery.map((src: string) => (
+        <Image src={src} alt='' />
+      ))}
+    </div>
+    <!-- CTA back button -->
+    <div class="text-center">
+      <Button
+        text={lang === "he" ? "חזרה למסלולים" : "Back to routes"}
+        href={`/${lang}/routes`}
+        variant="secondary"
+      />
+    </div>
+  </section>
+</BaseLayout>

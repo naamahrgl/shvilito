@@ -24,7 +24,7 @@ export default function RecommendationsCarousel({ lang }: Props) {
   });
 
   const animationRef = useRef<number>(0);
-  const speed = 0.3; // marquee speed
+  const speed = 0.8; // marquee speed
 
   // Fetch recommendations
   useEffect(() => {
