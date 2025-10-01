@@ -175,3 +175,79 @@ export function ContentBlock({
   );
 }
 
+// בתוך src/components/ui.tsx
+
+interface ContactFormProps {
+  lang: 'he' | 'en';
+}
+
+export function ContactForm({  lang }: ContactFormProps) {
+    const t = {
+  he: {
+    title: "צרו קשר",
+    name: "שם מלא",
+    email: "אימייל",
+    phone: "טלפון",
+    message: "הודעה",
+    submit: "שליחה",
+  },
+  en: {
+    title: "Contact Us",
+    name: "Full Name",
+    email: "Email",
+    phone: "Phone",
+    message: "Message",
+    submit: "Send",
+  },
+}[lang];
+
+  return (
+    <form
+      method="POST"
+      action={`/api/contact`}
+      className="space-y-4 w-full"
+    >
+      {/* שדה שפה נסתר */}
+      <input type="hidden" name="lang" value={lang} />
+
+      <input
+        type="text"
+        name="name"
+        placeholder={t.name}
+        required
+        className="w-full p-3 border rounded-md"
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder={t.email}
+        className="w-full p-3 border rounded-md"
+      />
+
+      <input
+        type="tel"
+        name="phone"
+        placeholder={t.phone}
+        className="w-full  p-3 border rounded-md"
+        dir = {lang == 'he' ? 'rtl' : 'ltr'}
+      />
+
+      <textarea
+        name="message"
+        placeholder={t.message}
+        required
+        className="w-full p-3 border rounded-md h-32"
+      />
+
+      <button
+        type="submit"
+        className={`${TW.buttons.base} ${TW.buttons.primary} w-full`}
+      >
+        {t.submit}
+      </button>
+    </form>
+  );
+}
+
+

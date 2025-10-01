@@ -18,7 +18,7 @@ const texts = {
     home: 'עמוד הבית',
     about: 'אודות',
     routes: 'מסלולים',
-    gallery: 'גלריה',
+    contact: 'צרו קשר',
     offers: 'הטיולים שלנו',
     recs: 'המלצות',
   },
@@ -26,7 +26,7 @@ const texts = {
     home: 'Home',
     about: 'About',
     routes: 'Routes',
-    gallery: 'Gallery',
+    contact: 'Contact Us',
     offers: 'Our Trips',
     recs: 'Recommendations',
   }
@@ -38,7 +38,7 @@ const t = texts[(lang as 'he'|'en')];
 <div id="navlinks" class={container}>
   <a href=`/${lang}/` class={linkClass}>{t.home}</a>
   <a href=`/${lang}/about/` class={linkClass}>{t.about}</a>
+    <a href=`/${lang}/contact/` class={linkClass}>{t.contact}</a>
     <a href=`/${lang}/trips/` class={linkClass}>{t.offers}</a>
-  <a href=`/${lang}/gallery/` class={linkClass}>{t.gallery}</a>
   <a href=`/${lang}/routes/` class={linkClass}>{t.routes}</a>
 </div>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const lang = (Astro.params.lang === "en" || Astro.params.lang === "he")
+  ? Astro.params.lang
+  : "he";
+
+  export function getStaticPaths() {
+  return [
+    { params: { lang: 'he' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const t = {
+  he: {
+    title: "תודה!",
+    message: "הטופס נשלח בהצלחה. נחזור אליך בהקדם.",
+    back: "חזרה לעמוד הבית",
+  },
+  en: {
+    title: "Thank you!",
+    message: "Your form has been submitted successfully. We’ll get back to you soon.",
+    back: "Back to Homepage",
+  },
+}[lang];
+---
+
+<BaseLayout pageTitle={t.title} lang={lang} dir={lang === "he" ? "rtl" : "ltr"}>
+  <section class="flex flex-col items-center justify-center min-h-[60vh] px-4 py-12 text-center">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">{t.title}</h1>
+    <p class="text-gray-600 text-lg mb-8 max-w-xl">{t.message}</p>
+    <a 
+      href={`/${lang}/`} 
+      class="inline-block bg-[#d4a373] text-white font-semibold px-6 py-3 rounded-2xl shadow-md hover:bg-[#b88358] transition"
+    >
+      {t.back}
+    </a>
+  </section>
+</BaseLayout>
