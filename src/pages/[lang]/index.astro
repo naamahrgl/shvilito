@@ -55,10 +55,10 @@ const t = texts[lang];
 
 <BaseLayout pageTitle={t.pageTitle} lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
   
-<section class="relative min-h-[80vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center">
+<section class="relative  w-full overflow-hidden flex items-center justify-center">
   <!-- Video background -->
   <video 
-    class="absolute top-0 left-0 w-full h-full object-cover"
+    class="absolute inset-0 w-full h-full object-cover"
     autoplay 
     muted 
     loop 
