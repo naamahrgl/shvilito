@@ -1,7 +1,7 @@
 ---
 // src/pages/[lang]/about.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Box, Title } from '../../components/ui';
+import { Box, Title, Button, Image } from '../../components/ui';
 
 export function getStaticPaths() {
   return [
@@ -58,9 +58,21 @@ const { title, subtitle, paragraphs, images } = content[lang];
         {paragraphs.map((p, idx) => (
           <p class="mb-4 text-gray-700 leading-relaxed">{p}</p>
         ))}
+    <Image src='/סלפי עם קבוצה.webp' alt='' className="w-full h-full rounded-lg shadow-lg" />
 
 
       </Box>
+
+    </div>
+
+  </section>
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <div class="text-center">
+      <Button
+        text={lang === "he" ? "חזרה לעמוד הבית" : "Back to home page"}
+        href={`/${lang}/`}
+        variant="secondary"
+      />
     </div>
   </section>
 </BaseLayout>

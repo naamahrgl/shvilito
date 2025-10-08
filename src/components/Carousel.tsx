@@ -19,12 +19,14 @@ export default function RecommendationsCarousel({ lang }: Props) {
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "free",
-    slides: { perView: "auto", spacing: 24 },
+    slides: { perView: "auto", spacing: 16 },
+    renderMode: "performance",
     drag: false,
+      vertical: false,
   });
 
   const animationRef = useRef<number>(0);
-  const speed = 0.8; // marquee speed
+  const speed = 1; // marquee speed
 
   // Fetch recommendations
   useEffect(() => {
@@ -42,24 +44,52 @@ export default function RecommendationsCarousel({ lang }: Props) {
     fetchRecs();
   }, []);
 
-  // Infinite marquee
-  useEffect(() => {
-    if (!slider?.current || recs.length === 0) return;
+// Infinite marquee
+useEffect(() => {
+  if (!slider?.current || recs.length === 0) return;
 
-    const container = slider.current.container;
-    let scrollPos = 0;
-    const totalWidth = container.scrollWidth;
+  const container = slider.current.container;
+  let scrollPos = 0;
+  const totalWidth = container.scrollWidth;
+  let isPaused = false;
 
-    const step = () => {
+  const step = () => {
+    if (!isPaused) {
       scrollPos += speed;
       if (scrollPos >= totalWidth) scrollPos = 0;
       container.scrollLeft = scrollPos;
-      animationRef.current = requestAnimationFrame(step);
-    };
-
+    }
     animationRef.current = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationRef.current);
-  }, [slider, recs]);
+  };
+
+  const handleMouseEnter = () => { isPaused = true; };
+  const handleMouseLeave = () => { isPaused = false; };
+
+  // 🟢 NEW: pause on touch (mobile)
+  const handleTouchStart = () => { isPaused = true; };
+  const handleTouchEnd = () => { isPaused = false; };
+
+  container.addEventListener("mouseenter", handleMouseEnter);
+  container.addEventListener("mouseleave", handleMouseLeave);
+
+  // 🟢 NEW: attach touch events
+  container.addEventListener("touchstart", handleTouchStart);
+  container.addEventListener("touchend", handleTouchEnd);
+
+  animationRef.current = requestAnimationFrame(step);
+
+  return () => {
+    cancelAnimationFrame(animationRef.current);
+    container.removeEventListener("mouseenter", handleMouseEnter);
+    container.removeEventListener("mouseleave", handleMouseLeave);
+
+    // 🟢 NEW: cleanup touch listeners
+    container.removeEventListener("touchstart", handleTouchStart);
+    container.removeEventListener("touchend", handleTouchEnd);
+  };
+}, [slider, recs]);
+
+
 
   if (!recs.length) return <p className="text-center">טוען המלצות...</p>;
 
@@ -77,16 +107,20 @@ export default function RecommendationsCarousel({ lang }: Props) {
       >
         {duplicated.map((rec, idx) => (
 <div
-  key={`${rec.id}-${idx}`} 
-  className="keen-slider__slide flex flex-col justify-between bg-white rounded-2xl shadow-md p-6 text-center border border-gray-200 min-w-[300px]"
+  key={`${rec.id}-${idx}`}
+  className="keen-slider__slide flex flex-col justify-between bg-white rounded-2xl shadow-md p-4 md:p-6 
+             text-center border border-gray-200 flex-shrink-0 
+             min-w-[260px] max-w-[400px] w-[80vw] md:w-[360px]"
 >
-  <p className="text-lg italic mb-4">
+  <p className="text-sm md:text-base italic mb-4 leading-relaxed">
     "{lang === "he" ? rec.text_he : rec.text_en}"
   </p>
-  <h3 className="font-semibold text-gray-700 mt-auto">
+  <h3 className="font-semibold text-gray-700 mt-auto text-sm md:text-base">
     — {lang === "he" ? rec.name_he : rec.name_en}
   </h3>
 </div>
+
+
 
         ))}
       </div>

@@ -11,7 +11,7 @@ interface Params {
 
 const { lang, trail } = Astro.params as Params;
 const data: TrailProps | undefined = trails[lang]?.[trail];
-const metadata: TrailMetaProps = metatrailsmeta.trailId[trail];
+const metadata: TrailMetaProps = metatrailsmeta[trail];
 
 if (!data) {
   throw new Error(`Trail "${trail}" not found for lang "${lang}"`);

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Button } from "../../components/ui";
 
 const lang = (Astro.params.lang === "en" || Astro.params.lang === "he")
   ? Astro.params.lang
@@ -30,11 +31,12 @@ const t = {
   <section class="flex flex-col items-center justify-center min-h-[60vh] px-4 py-12 text-center">
     <h1 class="text-3xl md:text-4xl font-bold mb-4">{t.title}</h1>
     <p class="text-gray-600 text-lg mb-8 max-w-xl">{t.message}</p>
-    <a 
-      href={`/${lang}/`} 
-      class="inline-block bg-[#d4a373] text-white font-semibold px-6 py-3 rounded-2xl shadow-md hover:bg-[#b88358] transition"
-    >
-      {t.back}
-    </a>
+        <div class="text-center">
+      <Button
+        text={lang === "he" ? "חזרה לעמוד הבית" : "Back to home page"}
+        href={`/${lang}/`}
+        variant="secondary"
+      />
+    </div>
   </section>
 </BaseLayout>

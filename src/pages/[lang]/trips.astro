@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Box, Title } from '../../components/ui';
+import { Box, Title, Button } from '../../components/ui';
 
 export function getStaticPaths() {
   return [
@@ -23,17 +23,17 @@ const content = {
       {
         name: "ימי גיבוש לחברות וארגונים",
         description: "בפורמט שהכי מצליח אצלנו, אנחנו נפגשים בבוקר בחניון יפה בטבע לארוחת בוקר בשטח, ממשיכים לפעילות גיבוש קלילה וכיפית, יוצאים למסלול קצר בטבע, משלבים אטרקציה מעניינת, ומסיימים בארוחת צהריים טעימה. אנחנו בונים יחד איתכם את היום לפי התקציב, הצרכים והחלום שלכם – כדי ליצור חוויה ייחודית ומגבשת לעובדים.",
-        image: { src: "/hi.jpg", alt: "ימי גיבוש" }
+        image: { src: "/ידיים.webp", alt: "ימי גיבוש" }
       },
       {
         name: "טיולי משפחות",
         description: "אנחנו מתארגנים יחד עם כמה משפחות ויוצאים למסלול קליל של כשעתיים וחצי בטבע. במהלך הטיול אנו משלבים פעילות יצירה מותאמת לילדים, שמוסיפה ממד חווייתי ומעצים. המטרה שלנו היא להשאיר זיכרון חיובי, מחזק ומשמעותי אצל הקטנים – וגם אצל ההורים. באתר תוכלו לראות המלצות ממשפחות שכבר טיילו איתנו.",
-        image: { src: "/hi.jpg", alt: "טיולי משפחות" }
+        image: { src: "/קוביות.webp", alt: "טיולי משפחות" }
       },
       {
         name: "טיולי עששיות",
         description: "אנחנו נפגשים מעט לפני השקיעה, מקבלים הסבר על השימוש בעששיות, ויוצאים יחד לשטח כשהחושך יורד. במהלך ההליכה נציב מלכודות לעקבות, נשוחח על בעלי החיים הליליים וננסה לאתר אותם בשטח. זוהי חוויה קסומה המשלבת למידה, הרפתקה וקסם מיוחד של לילה בטבע.",
-        image: { src: "/hi.jpg", alt: "טיולי עששיות" }
+        image: { src: "/עששיות.webp", alt: "טיולי עששיות" }
       },
       {
         name: "מחנה הורה וילד",
@@ -54,17 +54,17 @@ const content = {
       {
         name: "Corporate Team Building",
         description: "In our most successful format, we meet in the morning at a scenic parking area in nature for breakfast, continue with light and fun team-building activities, take a short trail in nature, add an interesting attraction, and finish with a delicious lunch. We plan the day together with you according to budget, needs, and dreams – creating a unique and bonding experience for employees.",
-        image: { src: "/hi.jpg", alt: "Corporate Team Building" }
+        image: { src: "/ידיים.webp", alt: "Corporate Team Building" }
       },
       {
         name: "Family Hikes",
         description: "We organize with several families and go on an easy 2.5-hour trail in nature. During the hike, we include creative activities for kids, adding a fun and empowering dimension. Our goal is to leave a positive, strengthening, and meaningful memory for both children and parents. On our website, you can see recommendations from families who have already hiked with us.",
-        image: { src: "/hi.jpg", alt: "Family Hikes" }
+        image: { src: "/קוביות.webp", alt: "Family Hikes" }
       },
       {
         name: "Lantern Hikes",
         description: "We meet shortly before sunset, get instructions on how to use lanterns, and head out into the outdoors as darkness falls. Along the way, we set up tracking traps, talk about nocturnal animals, and try to spot them in the wild. This magical experience combines learning, adventure, and the special charm of a night in nature.",
-        image: { src: "/hi.jpg", alt: "Lantern Hikes" }
+        image: { src: "/עששיות.webp", alt: "Lantern Hikes" }
       },
       {
         name: "Parent & Child Camp",
@@ -91,7 +91,7 @@ const { title, subtitle, trips } = content[lang];
         <Box  className="flex flex-col md:flex-row gap-6 p-6 bg-white shadow-lg rounded-lg">
           {trip.image && (
             <div class="md:w-1/3 flex-shrink-0 rounded-lg overflow-hidden">
-              <img src={trip.image.src} alt={trip.image.alt} class="w-full h-full object-cover" />
+              <img src={trip.image.src} alt={trip.image.alt}   class="w-full h-48 md:h-56 object-cover rounded-lg" />
             </div>
           )}
           <div class="flex-1 flex flex-col gap-4">
@@ -102,5 +102,14 @@ const { title, subtitle, trips } = content[lang];
       ))}
 
     </div>
+  <section class="max-w-6xl mx-auto px-4 py-12">
+        <div class="text-center">
+      <Button
+        text={lang === "he" ? "חזרה לעמוד הבית" : "Back to home page"}
+        href={`/${lang}/`}
+        variant="secondary"
+      />
+    </div>
+  </section>
   </section>
 </BaseLayout>

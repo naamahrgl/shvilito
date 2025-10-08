@@ -8,13 +8,16 @@ export interface TrailProps {
   water: string;
   difficulty: string;
   season: string;
-  img: string;
+  seasoncats: string[];
   content: string;
-  gallery: string[];
+  gallery?: string[];
+    img?: string; // ✅ add this
+  map?: string; // ✅ optional, since you also merge this
 }
 
 export interface TrailMetaProps {
   img: string;
+  map: string;
   gallery: string[];
 }
 
@@ -22,12 +25,11 @@ export type TrailsByLang = {
   he: Record<string, TrailProps>;
   en: Record<string, TrailProps>;
 };
-export type TrailsMeta= {
-      trailId: Record<string, TrailMetaProps>;
-};
+export type TrailsMeta = Record<string, TrailMetaProps>;
 
 
-export const trails: TrailsByLang = {
+
+export const rawTrails: TrailsByLang = {
   he: {
     kziv: {
       name: "נחל כזיב",
@@ -37,7 +39,7 @@ export const trails: TrailsByLang = {
       water: "יש - כניסה לנחל",
       difficulty: "בינוני",
       season: "כל השנה",
-      img: "/hi.jpg",
+      seasoncats: ["קיץ", "אביב", "סתיו", "חורף"],
       content: `
 טענו בעבר ונמשיך לטעון- נחל כזיב הוא היפה שבנחלי ישראל!!
  מים זכים בצל עצי דולב ענקיים נותנים תחושב כאילו שאנחנו מטיילים בסלובניה או יוון. 
@@ -54,7 +56,8 @@ export const trails: TrailsByLang = {
       water: "יש - כניסה לנחל",
       difficulty: "קל",
       season: "כל השנה",
-      img: "/hi.jpg",
+      seasoncats: ["קיץ", "אביב", "סתיו", "חורף"],
+
       content: `
 נטייל בחלקים הנקיים של נהר הירקון המפתיע! 
 מתחילים בטחנת אבו-ראבח ההיסטורית. 
@@ -72,7 +75,8 @@ export const trails: TrailsByLang = {
       water: "שכשוך רגליים",
       difficulty: "קל",
       season: "כל השנה",
-      img: "/hi.jpg",
+      seasoncats: ["קיץ", "אביב", "סתיו", "חורף"],
+
       content: `
 אחד הנחלים הקסומים והמפתיעים. לא סתם נקרא בפי המקומיים יער הפיות. 
 יער אקליפטי עם מטפסים שמגיעים עד השמיים. 
@@ -91,7 +95,7 @@ export const trails: TrailsByLang = {
       water: "Yes",
       difficulty: "Medium",
       season: "Year-round",
-      img: "/hi.jpg",
+            seasoncats: ["Summer", "Winter", "Autumn", "Spring"],
       content: `
 We have claimed in the past and will continue to claim - Nahal Kziv is the most beautiful of the rivers in Israel!!
 Clear water in the shade of huge plane trees makes you think that you are traveling in Slovenia or Greece. 
@@ -107,7 +111,8 @@ From the olive parking lot we go down a steep blue path towards Ein Tamir. We ba
       water: "Yes",
       difficulty: "Easy",
       season: "Year-round",
-      img: "/hi.jpg",
+                  seasoncats: ["Summer", "Winter", "Autumn", "Spring"],
+
       content: `
 We will hike the cleanest parts of the surprising Yarkon River! 
 Starting at the historic Abu Rabah Mill. 
@@ -126,7 +131,8 @@ Very suitable for families with young children who are looking for a fun and enr
       water: "Shallow",
       difficulty: "Easy",
       season: "Year-round",
-      img: "/hi.jpg",
+                  seasoncats: ["Summer", "Winter", "Autumn", "Spring"],
+
       content: `
 One of the magical and surprising streams. It is not for nothing that the locals call it the fairy forest. 
 An eucalypt forest with climbers that reach up to the sky. 
@@ -138,21 +144,45 @@ A wild and charming experience. From the Gahar parking lot, you descend along a 
 };
 
 export const metatrailsmeta: TrailsMeta = {
-    trailId:{
         kziv: {
 
-      img: '/hi.jpg',
+      img: '/נחל כזיב.webp',
+      map: '',
   gallery: ["/hi.jpg", "/hi.jpg",  "/hi.jpg"]
         },
         yarkon: {
 
       img: '/hi.jpg',
+            map: '',
+
   gallery: ["/hi.jpg",]
         },
         gachar: {
 
-      img: '/hi.jpg',
+      img: '/גחר.webp',
+            map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
-        },},
+        },
 };
+
+/* -----------------------------------
+   Merge language data + meta
+----------------------------------- */
+export const trails: TrailsByLang = (() => {
+  const out: any = { he: {}, en: {} };
+
+  (Object.keys(rawTrails) as ("he" | "en")[]).forEach((lang) => {
+    Object.entries(rawTrails[lang]).forEach(([id, trail]) => {
+      const meta = metatrailsmeta[id] ?? {};
+      out[lang][id] = {
+        ...trail,
+        img: meta.img ?? trail.gallery?.[0],
+        map: meta.map ?? "",
+        gallery: Array.from(new Set([...(trail.gallery ?? []), ...(meta.gallery ?? [])])),
+      };
+    });
+  });
+
+  return out;
+})();

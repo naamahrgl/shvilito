@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { ContactForm } from "../../components/ui.tsx";
+import { ContactForm, Button } from "../../components/ui.tsx";
 
 export function getStaticPaths() {
   return [
@@ -28,4 +28,11 @@ const t = {
     <h1 class="text-3xl font-bold mb-6 text-center">{t.title}</h1>
     <ContactForm lang={lang} client:only="react" />
   </section>
+          <div class="text-center">
+      <Button
+        text={lang === "he" ? "חזרה לעמוד הבית" : "Back to home page"}
+        href={`/${lang}/`}
+        variant="secondary"
+      />
+    </div>
 </BaseLayout>

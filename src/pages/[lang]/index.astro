@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { ContentBlock, Button, Box, RoundButton, ContactForm } from '../../components/ui';
-import RecommendationsCarousel from '../../components/Carousel.tsx';
+import RecommendationsCarousel from '../../components/Carousel';
 import { socialIcon } from '../../styles/styles';
 
 
@@ -51,7 +51,9 @@ const texts = {
 };
 
 const t = texts[lang];
+
 ---
+
 
 <BaseLayout pageTitle={t.pageTitle} lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
   
@@ -108,7 +110,7 @@ const t = texts[lang];
   <ContentBlock
     title={t.aboutTitle}
     text={t.aboutText}
-    imageSrc="/hi.jpg"
+    imageSrc="/אודות.webp"
     imageAlt={t.aboutTitle}
     buttonText={t.aboutButton}
     buttonHref={`/${lang}/about`}
@@ -118,7 +120,7 @@ const t = texts[lang];
   <ContentBlock
     title={t.servicesTitle}
     text={t.servicesText}
-    imageSrc="/hi.jpg"
+    imageSrc="/עששיות 2.webp"
     imageAlt={t.servicesTitle}
     buttonText={t.servicesButton}
     buttonHref={`/${lang}/trips`}
@@ -127,7 +129,7 @@ const t = texts[lang];
   <ContentBlock
     title={t.routesTitle}
     text={t.routesText}
-    imageSrc="/hi.jpg"
+    imageSrc="/כשיב 3.webp"
     imageAlt={t.routesTitle}
     buttonText={t.routesButton}
     buttonHref={`/${lang}/routes`}
