@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { ContentBlock, Button, Box, RoundButton, ContactForm } from '../../components/ui';
+import { ContentBlock, Title, Box, RoundButton, ContactForm } from '../../components/ui';
 import RecommendationsCarousel from '../../components/Carousel';
 import { socialIcon } from '../../styles/styles';
 
@@ -22,8 +22,8 @@ const lang = (params as Params).lang;
 const texts = {
   he: {
     pageTitle: 'עמוד הבית',
-        heroTitle: 'כרמל אבני - מורה דרך',
-
+        heroTitle: 'שביליטו',
+subtitle:'טיולים · חוויות · ערך',
     aboutTitle: 'אודות',
     
     aboutText:       'שמי כרמל, ואני הפנים שמאחורי שביליטו.',
@@ -37,7 +37,9 @@ const texts = {
   },
   en: {
     pageTitle: 'Home Page',
-        heroTitle: 'Carmel Avni - Tour Guide',
+        heroTitle: 'Shvilito',
+        subtitle:'Trips · Experiences · Value',
+
     aboutTitle: 'About',
     aboutText: 'My name is Carmel, and I am the face behind Shvilito.',
     aboutButton: 'Learn More About Me',
@@ -75,10 +77,12 @@ const t = texts[lang];
   <div class="relative z-10 flex flex-col items-center justify-center text-center gap-6 px-4">
     <img src="/logotrans.png" alt="Logo" class="w-40 md:w-60" />
 
-    <h1 class="text-white text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg">
+    <h1 class="text-[#57715C] text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg">
       {t.heroTitle}
     </h1>
-
+    <h3 class="text-[#57715C] text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg">
+      {t.subtitle}
+    </h3>
     <div class="flex flex-wrap justify-center gap-4 mt-4">
       <RoundButton 
         text="/Instagram_Glyph_Black.svg" 
@@ -106,15 +110,6 @@ const t = texts[lang];
 
 
 
-  <!-- קונטיינר אודות -->
-  <ContentBlock
-    title={t.aboutTitle}
-    text={t.aboutText}
-    imageSrc="/אודות.webp"
-    imageAlt={t.aboutTitle}
-    buttonText={t.aboutButton}
-    buttonHref={`/${lang}/about`}
-  />
 
   <!-- קונטיינר שירותים -->
   <ContentBlock
@@ -136,9 +131,10 @@ const t = texts[lang];
     reverse={true}
   />
 
-<section class="mt-16 bg-[#f5eee7]">
-  <h2 class="text-3xl font-bold text-center mb-6">
+<section class="mt-16 bg-[#f5eee7] ">
+  <h2 class="text-3xl font-bold text-center mb-6 gap-10">
     {lang === "he" ? "המלצות" : "Recommendations"}
+
   </h2>
   <RecommendationsCarousel client:only="react" lang={lang} />
 </section>
@@ -150,4 +146,14 @@ const t = texts[lang];
     <h1 class="text-3xl font-bold mb-6 text-center">{lang === 'he' ? 'צרו קשר' : 'Contact Us'}</h1>
     <ContactForm  lang={lang} client:only="react" />
   </section>
+    <!-- קונטיינר אודות -->
+  <ContentBlock
+    title={t.aboutTitle}
+    text={t.aboutText}
+    imageSrc="/אודות.webp"
+    imageAlt={t.aboutTitle}
+    buttonText={t.aboutButton}
+    buttonHref={`/${lang}/about`}
+  />
+
 </BaseLayout>

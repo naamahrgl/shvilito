@@ -150,10 +150,10 @@ export function ContentBlock({
     />
 
     {/* Gradient fade to content background */}
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#f5eee7]" />
+    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent to-[#f5eee7]" />
 
     {/* Title overlay, positioned ~2/3 down */}
-    <div className="absolute top-2/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4">
       <Title text={title} size="md" className="text-white drop-shadow-lg" />
     </div>
   </div>

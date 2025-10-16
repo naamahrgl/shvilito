@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { Button } from "./ui";
 
 interface Recommendation {
   id: string;
@@ -112,18 +113,32 @@ useEffect(() => {
              text-center border border-gray-200 flex-shrink-0 
              min-w-[260px] max-w-[400px] w-[80vw] md:w-[360px]"
 >
-  <p className="text-sm md:text-base italic mb-4 leading-relaxed">
-    "{lang === "he" ? rec.text_he : rec.text_en}"
-  </p>
+<p className="text-sm md:text-base italic mb-4 leading-relaxed">
+  "{(lang === "he" ? rec.text_he : rec.text_en).slice(0, 220)}
+  {((lang === "he" ? rec.text_he : rec.text_en).length > 220) && "…"}"
+</p>
+
+
   <h3 className="font-semibold text-gray-700 mt-auto text-sm md:text-base">
     — {lang === "he" ? rec.name_he : rec.name_en}
   </h3>
+
 </div>
 
 
 
         ))}
+
       </div>
+      <p>" " </p>
+              <div className="block text-center">
+      <Button
+        text={lang === "he" ? "קראו עוד" : "Read More"}
+        href={`/${lang}/recommendations`}
+        variant="primary"
+      />
+    </div>
+
     </div>
   );
 }

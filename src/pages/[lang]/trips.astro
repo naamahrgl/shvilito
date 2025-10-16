@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Box, Title, Button } from '../../components/ui';
+import { ContactForm } from '../../components/ui';
 
 export function getStaticPaths() {
   return [
@@ -23,12 +24,12 @@ const content = {
       {
         name: "ימי גיבוש לחברות וארגונים",
         description: "בפורמט שהכי מצליח אצלנו, אנחנו נפגשים בבוקר בחניון יפה בטבע לארוחת בוקר בשטח, ממשיכים לפעילות גיבוש קלילה וכיפית, יוצאים למסלול קצר בטבע, משלבים אטרקציה מעניינת, ומסיימים בארוחת צהריים טעימה. אנחנו בונים יחד איתכם את היום לפי התקציב, הצרכים והחלום שלכם – כדי ליצור חוויה ייחודית ומגבשת לעובדים.",
-        image: { src: "/ידיים.webp", alt: "ימי גיבוש" }
+        image: { src: "/ידיים 2.webp", alt: "ימי גיבוש" }
       },
       {
         name: "טיולי משפחות",
         description: "אנחנו מתארגנים יחד עם כמה משפחות ויוצאים למסלול קליל של כשעתיים וחצי בטבע. במהלך הטיול אנו משלבים פעילות יצירה מותאמת לילדים, שמוסיפה ממד חווייתי ומעצים. המטרה שלנו היא להשאיר זיכרון חיובי, מחזק ומשמעותי אצל הקטנים – וגם אצל ההורים. באתר תוכלו לראות המלצות ממשפחות שכבר טיילו איתנו.",
-        image: { src: "/קוביות.webp", alt: "טיולי משפחות" }
+        image: { src: "/קוביות 2.webp", alt: "טיולי משפחות" }
       },
       {
         name: "טיולי עששיות",
@@ -38,7 +39,7 @@ const content = {
       {
         name: "מחנה הורה וילד",
         description: "אחד המוצרים האהובים עלינו ביותר. אנחנו נפגשים ליומיים מלאים בטבע, ודואגים לכל הלוגיסטיקה – לינה, ציוד וארוחות. ההורים והילדים שותפים בהכנת האוכל, בהדלקת אש, בחיפוש עקבות של בעלי חיים ובחוויות שטח משותפות. זהו זמן טהור, בלתי אמצעי ומעצים, שמחזק את הקשר בין הורה לילדו ויוצר זיכרונות שילוו אתכם עוד שנים רבות.",
-        image: { src: "/hi.jpg", alt: "מחנה הורה וילד" }
+        image: { src: "/אבא ובן.webp", alt: "מחנה הורה וילד" }
       }
     ]
   },
@@ -54,12 +55,12 @@ const content = {
       {
         name: "Corporate Team Building",
         description: "In our most successful format, we meet in the morning at a scenic parking area in nature for breakfast, continue with light and fun team-building activities, take a short trail in nature, add an interesting attraction, and finish with a delicious lunch. We plan the day together with you according to budget, needs, and dreams – creating a unique and bonding experience for employees.",
-        image: { src: "/ידיים.webp", alt: "Corporate Team Building" }
+        image: { src: "/ידיים 2.webp", alt: "Corporate Team Building" }
       },
       {
         name: "Family Hikes",
         description: "We organize with several families and go on an easy 2.5-hour trail in nature. During the hike, we include creative activities for kids, adding a fun and empowering dimension. Our goal is to leave a positive, strengthening, and meaningful memory for both children and parents. On our website, you can see recommendations from families who have already hiked with us.",
-        image: { src: "/קוביות.webp", alt: "Family Hikes" }
+        image: { src: "/קוביות 2.webp", alt: "Family Hikes" }
       },
       {
         name: "Lantern Hikes",
@@ -69,7 +70,7 @@ const content = {
       {
         name: "Parent & Child Camp",
         description: "One of our favorite experiences. We meet for two full days in nature and take care of all logistics – accommodation, gear, and meals. Parents and children participate in preparing food, lighting fires, tracking animal footprints, and sharing outdoor experiences. This is pure, unfiltered, and empowering time that strengthens the parent-child bond and creates memories that will last for years.",
-        image: { src: "/hi.jpg", alt: "Parent & Child Camp" }
+        image: { src: "/אבא ובן.webp", alt: "Parent & Child Camp" }
       }
     ]
   }
@@ -81,7 +82,7 @@ const { title, subtitle, trips } = content[lang];
 <BaseLayout pageTitle={title} lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
   <section class="py-16 md:py-24 px-4">
     <div class="container mx-auto flex flex-col gap-12">
-
+ 
       <Box className="p-8 bg-[#f5eee7]">
         <Title text={title} size="lg" className="mb-2" />
         <Title text={subtitle} size="md" className="mb-6" />
@@ -102,6 +103,10 @@ const { title, subtitle, trips } = content[lang];
       ))}
 
     </div>
+      <section class="max-w-xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-6 text-center">{lang === 'he' ? 'צרו קשר' : 'Contact Us'}</h1>
+    <ContactForm  lang={lang} client:only="react" />
+  </section>
   <section class="max-w-6xl mx-auto px-4 py-12">
         <div class="text-center">
       <Button
@@ -111,5 +116,6 @@ const { title, subtitle, trips } = content[lang];
       />
     </div>
   </section>
+
   </section>
 </BaseLayout>

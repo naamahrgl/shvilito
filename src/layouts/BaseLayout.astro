@@ -23,8 +23,6 @@ const { pageTitle, lang = 'en', dir = 'ltr' } = Astro.props;
     <Header lang={lang} />
     <slot />
     <Footer />
-    <script>
-            import "../scripts/menu.js";
-    </script>
+<script src="../../src/scripts/menu.js" defer></script>
   </body>
 </html>
