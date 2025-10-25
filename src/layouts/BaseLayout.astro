@@ -19,10 +19,9 @@ const { pageTitle, lang = 'en', dir = 'ltr' } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body class="overflow-x-hidden">
     <Header lang={lang} />
     <slot />
     <Footer />
-<script src="../../src/scripts/menu.js" defer></script>
   </body>
 </html>

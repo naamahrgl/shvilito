@@ -150,27 +150,26 @@ export function ContentBlock({
     />
 
     {/* Gradient fade to content background */}
-    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent to-[#f5eee7]" />
+    <div className="absolute bottom-0 left-0 right-0 h-1/2  to-[#f5eee7]" />
 
     {/* Title overlay, positioned ~2/3 down */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4">
       <Title text={title} size="md" className="text-white drop-shadow-lg" />
+
     </div>
+        <div className="absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4">
+
+       {buttonText && buttonHref && <Button 
+        text={buttonText} 
+        href={buttonHref}
+         />}
+         </div>
   </div>
 )}
 
 
 
-      {/* Content side */}
-      <div className="md:w-1/2 flex flex-col gap-4 bg-[#f5eee7] p-6 rounded-lg w-full">
-        {/* Title only visible if no image (avoid double) */}
-        {!imageSrc && <Title text={title} size="md" />}
-        <p className={TW.text.base}>{text}</p>
-        {buttonText && buttonHref && <Button 
-        text={buttonText} 
-        href={buttonHref}
-         />}
-      </div>
+
     </div>
   );
 }
