@@ -88,7 +88,7 @@ export const rawTrails: TrailsByLang = {
   },
   en: {
     kziv: {
-      name: "Nahal Kziv",
+      name: "Wadi Kziv",
       desc: "A magical trail in the north...",
       distance: "3.5 km",
             type: "Not circular - requires car pickup",
@@ -104,7 +104,7 @@ From the olive parking lot we go down a steep blue path towards Ein Tamir. We ba
       gallery: ["/hi.jpg", "/hi.jpg", "/hi.jpg"],
     },
     yarkon: {
-      name: "Yarkon River",
+      name: "Wadi Yarkon",
       desc: "A light and family-friendly walk...",
       distance: "2.5 km",
             type: "Circular",
@@ -123,7 +123,7 @@ Very suitable for families with young children who are looking for a fun and enr
       gallery: ["/hi.jpg", "/hi.jpg"],
     },
             gachar: {
-      name: "Nahal Gachar",
+      name: "Wadi Gachar",
       desc: "A light and family-friendly walk...",
       distance: "3.5 km",
             type: "Circular",
