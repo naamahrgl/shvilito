@@ -59,8 +59,15 @@ const t = texts[lang];
 
 <BaseLayout pageTitle={t.pageTitle} lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
   
-<section class="relative  w-full overflow-hidden flex items-center justify-center">
-  <!-- Video background -->
+<section class="
+  relative
+  w-full
+  overflow-hidden
+  flex items-center justify-center
+  min-h-[70vh]
+  sm:min-h-[80vh]
+  lg:min-h-screen
+">  <!-- Video background -->
   <video 
     class="absolute inset-0 w-full h-full object-cover"
     autoplay 
@@ -68,14 +75,22 @@ const t = texts[lang];
     loop 
     playsinline
   >
-    <source src="/water.mp4" type="video/mp4" />
+    <source src="/home.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
 
   <!-- Overlay content -->
-  <div class="relative z-10 flex flex-col items-center justify-center text-center gap-6 px-4">
-
+<div class="
+  relative z-10
+  flex flex-col items-center justify-center
+  text-center
+  gap-6
+  px-4
+  py-20
+  sm:py-28
+  lg:py-32
+">
     <h1 class="text-[#57715C] text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg">
       {t.heroTitle}
     </h1>
@@ -104,7 +119,10 @@ const t = texts[lang];
         className="w-12 h-12 md:w-16 md:h-16"
       />
     </div>
+
   </div>
+
+
 </section>
 
 
@@ -112,6 +130,8 @@ const t = texts[lang];
 
   <!-- קונטיינר שירותים -->
   <ContentBlock
+    className="-mt-24 sm:-mt-32"
+
     title={t.servicesTitle}
     text={t.servicesText}
     imageSrc="/עששיות 2.webp"
@@ -129,6 +149,15 @@ const t = texts[lang];
     buttonHref={`/${lang}/routes`}
     reverse={true}
   />
+    <!-- קונטיינר אודות -->
+  <ContentBlock
+    title={t.aboutTitle}
+    text={t.aboutText}
+    imageSrc="/אודות.webp"
+    imageAlt={t.aboutTitle}
+    buttonText={t.aboutButton}
+    buttonHref={`/${lang}/about`}
+  />
 
 <section class="mt-16 bg-[#f5eee7] ">
   <h2 class="text-3xl font-bold text-center mb-6 gap-10">
@@ -145,14 +174,6 @@ const t = texts[lang];
     <h1 class="text-3xl font-bold mb-6 text-center">{lang === 'he' ? 'צרו קשר' : 'Contact Us'}</h1>
     <ContactForm  lang={lang} client:only="react" />
   </section>
-    <!-- קונטיינר אודות -->
-  <ContentBlock
-    title={t.aboutTitle}
-    text={t.aboutText}
-    imageSrc="/אודות.webp"
-    imageAlt={t.aboutTitle}
-    buttonText={t.aboutButton}
-    buttonHref={`/${lang}/about`}
-  />
+
 
 </BaseLayout>
