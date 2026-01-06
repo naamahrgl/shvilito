@@ -86,7 +86,7 @@ export const rawTrails: TrailsByLang = {
       gallery: ["/hi.jpg", "/hi.jpg"],
     },
     arbel_hamam: {
-  name: "שביל ישראל | ממצפה עד – ואדי חמאם",
+  name: "שביל ישראל | ממצפה עד - ואדי חמאם",
   desc: "מסלול מרהיב בין הרים, מצוקים ונחל דרמטי",
   distance: "8 ק\"מ",
   type: "לא מעגלי",
@@ -103,7 +103,7 @@ export const rawTrails: TrailsByLang = {
 },
 
 osfiya_oren: {
-  name: "שביל ישראל | עוספיא – חניון נחל אורן",
+  name: "שביל ישראל | עוספיא - חניון נחל אורן",
   desc: "הליכה קלאסית בכרמל בין חורש ושבילים פתוחים",
   distance: "12 ק\"מ",
   type: "לא מעגלי",
@@ -119,7 +119,7 @@ osfiya_oren: {
 },
 
 yam_elyam_montfort: {
-  name: "שביל ים אל ים | חניון המונפורט – חניון אבירים",
+  name: "שביל ים אל ים | חניון המונפורט - חניון אבירים",
   desc: "קטע ירוק במיוחד בלב הגליל המערבי",
   distance: "10 ק\"מ",
   type: "לא מעגלי",
@@ -136,7 +136,7 @@ yam_elyam_montfort: {
 },
 
 yam_elyam_elkosh: {
-  name: "שביל ים אל ים | חניון אבירים – חניון אלקוש",
+  name: "שביל ים אל ים | חניון אבירים - חניון אלקוש",
   desc: "מסע שקט בין רכסים, נחלים ונוף גלילי פתוח",
   distance: "9 ק\"מ",
   type: "לא מעגלי",
@@ -202,12 +202,12 @@ cisterns_trail: {
 `,
 },
 
-judge_stream: {
+wadi_shashofet: {
   name: "נחל השופט",
   desc: "מסלול מוצל וזורם עם מים כל השנה",
-  distance: "4–5 ק\"מ",
+  distance: "4-5 ק\"מ",
   type: "מעגלי",
-  water: "יש – הליכה לצד מים",
+  water: "יש - הליכה לצד מים",
   difficulty: "קל",
   season: "כל השנה",
   seasoncats: ["קיץ", "אביב", "סתיו", "חורף"],
@@ -251,7 +251,7 @@ zeelim: {
 `,
 },
 
-og_stream: {
+wadi_og: {
   name: "נחל אוג",
   desc: "מסלול מדברי קצר, דרמטי ומלא אקשן",
   distance: "3.5 ק\"מ",
@@ -280,7 +280,7 @@ og_stream: {
       season: "Year-round",
             seasoncats: ["Summer", "Winter", "Autumn", "Spring"],
       content: `
-We have claimed in the past and will continue to claim - Nahal Kziv is the most beautiful of the rivers in Israel!!
+We have claimed in the past and will continue to claim - Wadi Kziv is the most beautiful of the rivers in Israel!!
 Clear water in the shade of huge plane trees makes you think that you are traveling in Slovenia or Greece. 
 The catch - for such beauty you have to make an effort and go through a big descent and a big ascent, but it is definitely worth it. 
 From the olive parking lot we go down a steep blue path towards Ein Tamir. We bathe in the natural pools in the clear water and go down the stream on the green path until we reach Maale Kida. We ascend the black route towards Goren park. `,
@@ -324,7 +324,7 @@ A wild and charming experience. From the Gahar parking lot, you descend along a 
       gallery: ["/hi.jpg", "/hi.jpg"],
     },
     arbel_hamam: {
-  name: "Israel Trail | Mitzpe Ad – Wadi Hamam",
+  name: "Israel Trail | Mitzpe Ad - Wadi Hamam",
   desc: "A dramatic mountain trail with wide views and steep descents",
   distance: "8 km",
   type: "Not circular",
@@ -341,11 +341,11 @@ Best suited for hikers with moderate fitness looking for big landscapes and chan
 },
 
 osfiya_oren: {
-  name: "Israel Trail | Osfiya – Nahal Oren",
+  name: "Israel Trail | Osfiya - Wadi Oren",
   desc: "A classic Carmel hike through Mediterranean woodland",
   distance: "12 km",
   type: "Not circular",
-  water: "Seasonal pools at Nahal Hik",
+  water: "Seasonal pools at Wadi Hik",
   difficulty: "Medium",
   season: "Year-round",
   seasoncats: ["Summer", "Winter", "Autumn", "Spring"],
@@ -357,24 +357,24 @@ A flowing and pleasant route that feels far from the city despite being close to
 },
 
 yam_elyam_montfort: {
-  name: "Sea to Sea Trail | Montfort – Abirim",
+  name: "Sea to Sea Trail | Montfort - Abirim",
   desc: "A lush and scenic section in the Western Galilee",
   distance: "10 km",
   type: "Not circular",
-  water: "Nahal Kziv, Plane Tree Pool",
+  water: "Wadi Kziv, Plane Tree Pool",
   difficulty: "Medium",
   season: "Year-round",
   seasoncats: ["Summer", "Winter", "Autumn", "Spring"],
   content: `
 A particularly green and mountainous section in the heart of the Western Galilee.
-Follows the route of Nahal Kziv.
+Follows the route of Wadi Kziv.
 Combines forest, distant viewpoints and historical sites along the way.
 A steady walk that gently introduces the rhythm of the Sea to Sea Trail.
 `,
 },
 
 yam_elyam_elkosh: {
-  name: "Sea to Sea Trail | Abirim – Elkosh",
+  name: "Sea to Sea Trail | Abirim - Elkosh",
   desc: "A peaceful journey through ridges and open Galilee landscapes",
   distance: "9 km",
   type: "Not circular",
@@ -440,12 +440,12 @@ A hike with added value — nature, history and local heritage.
 `,
 },
 
-judge_stream: {
-  name: "Judge Stream",
+wadi_shashofet: {
+  name: "Wadi HaShofet",
   desc: "A shaded trail with flowing water year-round",
-  distance: "4–5 km",
+  distance: "4-5 km",
   type: "Circular",
-  water: "Yes – walking alongside water",
+  water: "Yes - walking alongside water",
   difficulty: "Easy",
   season: "Year-round",
   seasoncats: ["Summer", "Winter", "Autumn", "Spring"],
@@ -458,7 +458,7 @@ Perfect for families and relaxed hikes.
 },
 
 mashmar: {
-  name: "Nahal Mashmar",
+  name: "Wadi Mashmar",
   desc: "A wild desert canyon for experienced hikers",
   distance: "9 km",
   type: "Circular",
@@ -474,7 +474,7 @@ An intense desert experience for experienced hikers only.
 },
 
 zeelim: {
-  name: "Nahal Ze’elim",
+  name: "Wadi Ze’elim",
   desc: "One of the most impressive canyons in the Judean Desert",
   distance: "10 km",
   type: "Not circular",
@@ -489,8 +489,8 @@ Visit the spring that flows year-round and descend via the dramatic canyon with 
 `,
 },
 
-og_stream: {
-  name: "Nahal Og",
+wadi_og: {
+  name: "Wadi Og",
   desc: "A short and dramatic desert loop near the Dead Sea",
   distance: "3.5 km",
   type: "Circular",
@@ -574,7 +574,7 @@ export const metatrailsmeta: TrailsMeta = {
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
-        },            judge_stream: {
+        },            wadi_shashofet: {
 
       img: '/גחר.webp',
             map: '',
@@ -593,7 +593,7 @@ export const metatrailsmeta: TrailsMeta = {
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
-        },         og_stream: {
+        },         wadi_og: {
 
       img: '/גחר.webp',
             map: '',
