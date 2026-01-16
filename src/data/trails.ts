@@ -532,70 +532,70 @@ export const metatrailsmeta: TrailsMeta = {
         },
                 arbel_hamam: {
 
-      img: '/גחר.webp',
+      img: '/jpgהר ארבל.webp',
             map: '',
-  gallery: ["/hi.jpg", "/hi.jpg"]
+  gallery: ["/jpgהר ארבל (1).webp", "/hi.jpg"]
 
         },        osfiya_oren: {
 
-      img: '/גחר.webp',
+      img: '/jpgים אל ים.webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },        yam_elyam_montfort: {
 
-      img: '/גחר.webp',
+      img: '/כשיב 3 (1).webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },    
             yam_elyam_elkosh: {
 
-      img: '/גחר.webp',
+      img: '/jpgאבירים.webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },
                     dalia_loop: {
 
-      img: '/גחר.webp',
+      img: '/כלנית סגולה.webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },            ela_trail: {
 
-      img: '/גחר.webp',
+      img: '/jpgהר ארבל.webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },            cisterns_trail: {
 
-      img: '/גחר.webp',
+      img: '/jpgבורות ובארות.webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },            wadi_shashofet: {
 
-      img: '/גחר.webp',
+      img: '/גחר 2.webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },
                  mashmar: {
 
-      img: '/גחר.webp',
+      img: '/jpgצאלים (1).webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },         zeelim: {
 
-      img: '/גחר.webp',
+      img: '/jpgצאלים 3.webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
         },         wadi_og: {
 
-      img: '/גחר.webp',
+      img: '/jpgצאלים.webp',
             map: '',
   gallery: ["/hi.jpg", "/hi.jpg"]
 
