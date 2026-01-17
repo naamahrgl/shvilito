@@ -22,6 +22,23 @@ const { pageTitle, lang = 'en', dir = 'ltr' } = Astro.props;
   <body class="overflow-x-hidden">
     <Header lang={lang} />
     <slot />
+    <div
+  id="cookie-notice"
+  class="fixed inset-x-0 bottom-0 z-50 bg-black text-white px-4 py-3 flex items-center justify-between text-sm"
+>
+  <span>
+    {lang === "he" ? "האתר משתמש בעוגיות לצורכי תפעול ואנליטיקה." : "This website uses cookies for functionality and analytics."}
+  </span>
+
+  <button
+    class="ml-4 shrink-0 rounded bg-white px-3 py-1 text-black"
+    onclick="document.getElementById('cookie-notice')?.remove()"
+  >
+        {lang === "he" ? "הבנתי" : "OK"}
+
+  </button>
+</div>
+
     <Footer />
   </body>
 </html>
